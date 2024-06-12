@@ -1,7 +1,7 @@
 import pygame
 import random
 
-# Define as cores
+# cores
 white = (255, 255, 255)
 black = (0, 0, 0)
 green = (0, 255, 100)
@@ -9,9 +9,9 @@ dark_green = (0, 200, 0)
 yellow = (255, 255, 0)
 red = (255, 0, 0)
 
-# Dimensões e configurações iniciais
-width, height = 1000, 800
-cell_size = 20
+# dimensoes e congif iniciais
+width, height = 1800, 1200
+cell_size = 40
 grid_width = width // cell_size
 grid_height = height // cell_size
 
@@ -51,14 +51,14 @@ class Snake:
 
 class Game:
     def __init__(self):
-        pygame.init()  # Inicializa todos os módulos do pygame
+        pygame.init()  # Inicializa modulos
         self.screen = pygame.display.set_mode((width, height))
         pygame.display.set_caption('jogo snake AleB')
         self.clock = pygame.time.Clock()
         self.snake = Snake()
         self.food = self.generate_food()
         self.poison = self.generate_poison()
-        self.font = pygame.font.SysFont(None, 36)  # Cria uma fonte do sistema, None usa a fonte padrão
+        self.font = pygame.font.SysFont(None, 60)  # Cria uma fonte do sistema, None usa a fonte padrão
 
     def generate_food(self):
         while True:
@@ -107,7 +107,7 @@ class Game:
             self.snake.draw(self.screen)
             pygame.draw.rect(self.screen, yellow, (self.food[0] * cell_size, self.food[1] * cell_size, cell_size, cell_size))
             pygame.draw.rect(self.screen, red, (self.poison[0] * cell_size, self.poison[1] * cell_size, cell_size, cell_size))
-            self.draw_score()  # Desenha o placar
+            self.draw_score()  # desenha placar
             pygame.display.update()
             self.clock.tick(15)
 
