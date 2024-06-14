@@ -13,9 +13,9 @@ class Solution:
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
         anterior, atual = None, head
 
-        while atual:  # Enquanto atual nao for None (não chegamos ao final da lista)
-            proximo = atual.next  # armazena o próximo no
-            atual.next = anterior  # Inverte o ponteiro: o próximo do nó atual passa a ser o no anterior
+        while atual:  # Enquanto atual nao for None (nao chegamos ao final da lista)
+            proximo = atual.next  # armazena o proximo no
+            atual.next = anterior  # Inverte o ponteiro: o proximo do no atual passa a ser o no anterior
             anterior = atual  # move o ponteiro anterior para o no atual
             atual = proximo  # move o ponteiro atual para o proximo no (salvo anteriormente)
         
