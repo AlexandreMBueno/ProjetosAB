@@ -1,4 +1,8 @@
 # Definition for a binary tree node.
+
+
+# achei essa bem complexa, rever para concretizar conceitos e a forma como funciona
+
 from typing import Optional
 
 
@@ -13,18 +17,21 @@ class Solution:
         if not subRoot: return True # pq toda arvore tem uma arvore vazia em algum filho por ex
         if not root: return False
 
-        if self.sameTree(root, subRoot):
-            return True
-        return(self.isSubtree(root.left, subRoot) or
-                self.isSubtree(root.right, subRoot))
+        if self.sameTree(root, subRoot):  # Verifica se arvore atual root == subRoot
+            return True  # Se for igual, retorna True, ou seja subRoot é uma subarvore de root
 
-    def sameTree(self, root, subRoot):
-        if not root and not subRoot:
-            return True
-        if root and subRoot and root.val == subRoot.val:
-            return(self.sameTree(root.left, subRoot.left) and
+        # se nao, continua verificando recursivamente nas sub-arvores a left e a right de root
+        return(self.isSubtree(root.left, subRoot) or  # verifica se subRoot eh uma subarvore do filho esquerdo de root
+                self.isSubtree(root.right, subRoot))  # verifica se subRoot eh uma subarvore do filho direito de root
+
+
+    def sameTree(self, root, subRoot): # funcao auxiliar p ver se e a mesma arvore
+        if not root and not subRoot: # se ambos sao nulos, subRoot eh sim uma subarvore de root
+            return True # por isso retorna True
+        if root and subRoot and root.val == subRoot.val: # se existem e tem valores iguais
+            return(self.sameTree(root.left, subRoot.left) and # aplica a funcao(forma recursiva) p LL e RR
                     self.sameTree(root.right, subRoot.right))
-        return False
+        return False # se nao existem ou tem valores diferentes ja retorna false
     
 solution = Solution()
 
