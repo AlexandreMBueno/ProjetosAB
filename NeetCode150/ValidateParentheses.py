@@ -15,6 +15,15 @@
 # ao final retorna True se a pilha estiver vazia, ou seja, tds os ({[]}) tiveram correspondencia
 # se nao tiver vazia e pq algum nao teve correspondencia
 
+#closeToOpen[c]
+
+# Quando estamos iterando sobre a string s, a variável c representa o caractere atual.
+# Se c for um caractere de fechamento
+#(ou seja, c é uma chave no dicionário closeToOpen), closeToOpen[c] nos dá o caractere de abertura correspondente.
+
+
+
+
 from typing import List
 
 class Solution:
