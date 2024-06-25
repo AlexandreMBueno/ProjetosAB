@@ -1,29 +1,41 @@
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
-
+        '''
+        verifica se s t tem a msm qntd de letras
+        se nao, ja retorna false
+        iniciar dois dicionario para guardar:
+        1 - a letra(chave)
+        2 - numero de x q a letra aparece(valor)
+        p cada uma das letras das strings
+        verifica se a letra ta no dicionario
+        se sim, aumentamos o valor dela em 1  -> +=1
+        se nao, adicionamos ela no dic com valor 1   -> = 1
+        repete o processo p outra string, t
+        retorna os dois dicionarios, com return dic1 == dic2
+        se forem iguais, vai retornar True, caso contrario, False    
+        '''
         if len(s) != len(t):
-            return False # anagramas tem q ter msm qtd letras
+            return False
 
-        count_s = {} # contagem das letras
-        count_t = {}
+        dic_s = {}
+        dic_t = {}
 
-        for letter in s:
-            if letter in count_s:
-                count_s[letter] += 1 # incrementa valor em 1
+        for l in s:
+            if l in dic_s:
+                dic_s[l] = dic_s[l] + 1
             else:
-                count_s[letter] = 1  # add letra com valor 1
+                dic_s[l] = 1
 
-        for letter in t:
-            if letter in count_t:
-                count_t[letter] += 1
+        for l in t:
+            if l in dic_t:
+                dic_t[l] = dic_t[l] + 1
             else:
-                count_t[letter] = 1 
+                dic_t[l] = 1
 
-        #print(count_s)
-        #print(count_t)
-        return count_s == count_t # retorna se sao iguais
+        return dic_s == dic_t
+        
     
-# p testar no vscode
+# teste 1
 solution = Solution()
 
 # teste 1
