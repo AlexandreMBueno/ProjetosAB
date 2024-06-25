@@ -2,13 +2,22 @@ from typing import List # nao precisa no neetcode
 
 class Solution:
     def hasDuplicate(self, nums: List[int]) -> bool:
-        hashset = set() #caixa separada com numero nn duplicados
+        '''
+        criar um hashset [   ]
+        p cada um dos numeros em nums
+        verificar se ele ja ta no hashSet (caixa)
+        se ja tiver, retorna true pq encontramos um duplicado
+        se nao, add ele no hashSet
+        e continua verificando
+        assim, evitamos uso de memoria excessivo de verificar como cada um dos outros numeros
+        '''
 
-        for number in nums:
-            if number in hashset: # se tiver nessa cx
-                return True # retorna true e ja tem duplicado
-            hashset.add(number) # add o numero dentro do hashset
-        return False # se nao, retorna false
+        hashSet = set() # criando hashet
+        for n in nums:
+            if n in hashSet:
+                return True
+            hashSet.add(n)
+        return False
     
 solution = Solution()
 
@@ -22,6 +31,5 @@ print(solution.hasDuplicate(nums2))
 
 # a forma como esse codigo funciona  basicamente cria uma caixinha separada (hashset)
 # essa caixa comeca vazia e vamos adicionando os itens la dentro verificando com oq ja ta la
-# assim, evitamos uso de memoria excessivo de verificar como cada um dos outros numeros
 # se nao tem no hashset, add la dentro, se ja tem, retorna True pq encontrou duplicata
  
