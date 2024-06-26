@@ -4,6 +4,7 @@
 
 from typing import Optional
 
+# Definition for singly-linked list.
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
@@ -11,25 +12,34 @@ class ListNode:
 
 class Solution:
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        '''
+        comecamos criando 2 ponteiros, anterior e atual
+        loop enquanto o q atual nao for null
+            proximo no vai ser o atual.next ->
+            o proximo do atual vai ser o anterior
+            o anterior tera q ser o atual
+            e o atual o proximo
+        retornamos o anterior
+        '''
+
         anterior, atual = None, head
 
-        while atual:  # Enquanto atual nao for None (nao chegamos ao final da lista)
-            proximo = atual.next  # armazena o proximo no
-            atual.next = anterior  # Inverte o ponteiro: o proximo do no atual passa a ser o no anterior
-            anterior = atual  # move o ponteiro anterior para o no atual
-            atual = proximo  # move o ponteiro atual para o proximo no (salvo anteriormente)
-        
-        return anterior  # anterior agora e a nova cabeça(head) da lista invertida
+        while atual: 
+            proximo = atual.next
+            atual.next = anterior
+            anterior = atual
+            atual = proximo
+        return anterior
 
 
-# testes mais chatos por ser nos mas deu boa
+# testes
 
 solution = Solution()
 
 # teste 1
 head1 = ListNode(0, ListNode(1, ListNode(2, ListNode(3)))) # nos 
 teste1 = solution.reverseList(head1)
-print("Teste 1 - Output:", end=" ") # so p ficar bnt na hr de printar
+print("Teste 1 - Output:", end=" ")
 while teste1:
     print(teste1.val, end=" ")
     teste1 = teste1.next
