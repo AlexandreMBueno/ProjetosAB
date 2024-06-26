@@ -21,27 +21,34 @@
 # Se c for um caractere de fechamento
 #(ou seja, c é uma chave no dicionário closeToOpen), closeToOpen[c] nos dá o caractere de abertura correspondente.
 
-
-
-
-from typing import List
-
 class Solution:
     def isValid(self, s: str) -> bool:
-        pilha = [] # pilha p comparar com o ultimo ja q tem q ta na ordem certa e armazena os de abertura
-        closeToOpen = {")": "(", "]": "[", "}": "{"} # os q fecham e formato chave valor
+        '''
+    comecamos criando uma pilha vazia (last in, first out (LIFO))
+    dps, criamos um dic p armazenar chave valor os ({[]})
+    cada um de fechamento(chave), com seu de abertura(valor)
+    criamos ent um loop p cada (c)aracter na s(tring)
+        se c estiver no dicionario
+            e se pilha e pilha [-1] == dicionario[c]
+                removemos ele com pilha.pop() pois verificado q tem compatibilidade
+            caso nao
+                retornamos false
+        caso nao
+            adiconamos c na pilha com append
+    retornamos true se nao pilha (ou seja vazia) caso contrario false
+        '''
+        pilha = []
+        closeToOpen = {"}": "{", ")": "(", "]": "["}
 
         for c in s:
             if c in closeToOpen:
                 if pilha and pilha[-1] == closeToOpen[c]:
-                    pilha.pop() # esse pop e para remover o topo da pilha
+                    pilha.pop()
                 else:
                     return False
             else:
-                pilha.append(c) # add os de abertura ({[ na pilha
-
+                pilha.append(c)
         return True if not pilha else False
-
 
 
 solution = Solution()
