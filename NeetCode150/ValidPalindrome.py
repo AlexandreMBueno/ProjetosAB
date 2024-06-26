@@ -1,11 +1,22 @@
-from typing import List
-
 class Solution:
     def isPalindrome(self, s: str) -> bool:
-        s_formatada = ''.join(char for char in s if char.isalnum()).lower() # tira espaco pontuacao e .lower
+        '''
+        primeiro, precisamos formatar e retirar os espacos, acentos e letras maiusculas
+        criamos 2 variaveis,
+        inicial -> p primeira letra (0)
+        final -> para len(string q formatamos) - 1
+        ai criamos um loop p enquanto a inicial for menor q a final
+        ou seja, vamos comparar a primeira letra com a ultima 
+        dentro do loop, criamos uma condicao para verificar se sao diferentes
+        se forem, ja retorna False
+        caso contrario, incrementamos 1 em inicial e diminuimos 1 em final
+        ao final, retornamos true fora do loop caso todas as letras sejam iguais
+        '''
+        s_formatada = ''.join(char for char in s if char.isalnum()).lower()
+
 
         inicial = 0
-        final = len(s_formatada) - 1 # tamanho dela -1
+        final = len(s_formatada) - 1
 
         while inicial < final:
             if s_formatada[inicial] != s_formatada[final]:
@@ -13,6 +24,7 @@ class Solution:
             inicial += 1
             final -= 1
         return True
+
     
 
 solution = Solution()
