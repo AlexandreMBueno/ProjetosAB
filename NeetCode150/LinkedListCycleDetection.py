@@ -2,6 +2,7 @@
 from typing import Optional
 
 
+# Definition for singly-linked list.
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
@@ -9,19 +10,29 @@ class ListNode:
 
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
-        # comecar definindo 2 ponteiros, slow e fast
-        # ambos na mesma posicao,slow +=1, fast +=2
-        # sempre vao se encontrar independentemente do tamanho
-        # explicacao com anexo no trello
+        '''
+        comecaremos definindo 2 ponteiros
+        slow e fast, +=1 +=2
+        slow vai p proximo, ou seja, slow.next
+        fast vai p proximo, do proximo, ou seja, fast.next.next
+        isso significa q uma hr o fast vai chegar em slow se tiver ciclo
+        p fzr isso, enquanto o proximo nao for null
+        ficamos andando +=1 +=2
+        se uma hora slow == fast
+        retorna True q existe um ciclo
+        se nao, retorna false pq acabaram os nodes e nao se encontraram
+        '''
+
         slow, fast = head, head
 
-        while fast and fast.next: #enquanto proximo nao for null
-            slow = slow.next # aponta p proximo
-            fast = fast.next.next # aponta p proximo, do proximo
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+
             if slow == fast:
                 return True
         return False
-    
+
 
 # Teste
 # criacao manual da lista ligada com ciclo
