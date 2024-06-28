@@ -13,12 +13,19 @@
 
 class Solution:
     def climbStairs(self, n: int) -> int:
+        '''
+        nesse caso, a maneira de andar os n degraus segue fibonacci, ou seja
+        f(n) = f(n - 1) + f(n -2)
+        entao a maneira de subir os n degraus eh a soma de
+        maneiras de chegar ao degrau n - 1
+         +
+        maneiras de chegar ao degrau n - 2
+        '''
+
         if n == 0 or n == 1:
             return 1
         else:
-    # Soma o numero de maneiras de subir n-1 degraus com o numero de maneiras de subir n-2 degraus
-    # Isso pois, para chegar ao degrau n, pode-se vir do degrau n-1 (subindo 1 degrau) ou do degrau n-2 (subindo 2 degraus)
-            return self.climbStairs(n -1) + self.climbStairs(n-2)
+            return self.climbStairs(n - 1) + self.climbStairs(n - 2)  
 
 print("First Test:")
 solution= Solution()
